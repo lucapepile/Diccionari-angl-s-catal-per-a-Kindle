@@ -1,2 +1,13 @@
-# Diccionari-angles-catal-per-a-Kindle
-Diccionari anglès-català d'Enciclopèdia Catalana utilitzable a Kindle 
+# Diccionari-anglès-català-per-a-Kindle
+Aquesta és una versió del diccionari anglès català d'Enciclopèdia Catalana, utilitzable a Kindle. Està feta a partir de la versió en línia del mateix diccionari, a partir de la qual he construït la versió html del diccionari (_diccionari_complet.html_). A aquesta versió, juntament amb els criteris exigits per Amazon, hi he afegit tota la morfologia mitjançant la llibreria _lemminflect_.
+Finalment, he creat tots els fitxers necessaris per poder exportar el diccionari a un format .mobi, mitjançant Kindle Previewer. El fitxer resultant s'ha de copiar mitjançant USB a la carpeta _documents > dictionaries_ del Kindle.
+
+**Els passos a seguir són els següents:**  
+1) Descarrega tots els documents en una carpeta.
+2) Executa el codi _rastreja_angles.py_. Aquest codi pentina les 3833 pàgines en línia del diccionari anglès-català d'Enciclopèdia Catalana i extrau totes les entrades del diccionari en un fitxer que anomena _Diccionari_complet.html_, en el qual també afegeix diversos estils al cos de l'html, extrets dels originals de la pàgina web. El codi fa més d'una crida a la pàgina en cas que hi hagi algun error, però tenint en compte que ha de fer vora 4000 crides, en cas que alguna pàgina no es pugui extraure, quedarà registrada en un fitxer _errors.log_. Si el fitxer d'errors és buit, perfecte. En cas cotrari, caldrà executar el codi _reintentar_errors_angles.py_, que torna a intentar extraure les entrades de les pàgines que no ha sigut possible.
+3) A continuació, executa el codi _partir_diccionari.py_, que partirà el fitxer _Diccionari_complet.html_ en 300 parts perquè sigui més manejable per al _Kindle Previewer_, al mateix temps que li donarà el format html que Amazon demana per als diccionaris i l'ordenarà alfabèticament. Es crearà una carpeta nova anomenada _parts_diccionari_, a la qual s'hi copiarà el fitxer _styles.css_, que, dintre d'uns determinats paràmetres, intenta mantenir el mateix format que la pàgina web dona al diccionari.
+4) I finalment, executa el codi _derivar_parts.py_. Aquest codi afegirà tota la morfologia necessària a cada paraula que apareix al diccionari, perquè Kindle ho pugui reconèixer.
+5) Ja per acabar, obre el fitxer dicc.opf des de _Kindle Previewer 3_. Quan tingui tots els documents html processats, exporta el contingut en un fitxer.mobi; aquest fitxer és el que s'ha de copiar a la carpeta _Diccionaris_ de Kindle.
+
+Cal tindre el compte que els meus coneixements de programació són pràcticament nuls. Tot el codi ha estat escrit mitjançant IA. La meua feina, a base d'assaig error, ha consistit en ajustar-lo simplificant i ajustant al màxim les peticions al programador.
+
